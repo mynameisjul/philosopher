@@ -6,7 +6,7 @@
 #    By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 14:38:38 by jblaye            #+#    #+#              #
-#    Updated: 2024/04/26 10:09:38 by jblaye           ###   ########.fr        #
+#    Updated: 2024/04/30 15:08:50 by jblaye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,24 @@ INCLD_DIR 	:= includes
 OBJS_DIR 	:= objs
 
 ### FILES ###
-SRC 		:=	parsing.c \
+SRC 		:=	flemme.c  \
 				init.c \
-				main.c
-SRC_TEST	:=	parsing.c \
+				main.c \
+				mutex.c \
+				parsing.c \
+				print_state.c \
+				routine.c \
+				routine_utils.c \
+				utils.c
+SRC_TEST	:=	flemme.c  \
 				init.c \
-				test.c
+				test.c \
+				mutex.c \
+				parsing.c \
+				print_state.c \
+				routine.c \
+				routine_utils.c \
+				utils.c
 INCLUDES	:=	$(INCLD_DIR)
 INCLD_FLAG 	:= 	$(addprefix -I , $(INCLUDES))
 OBJS 		:= 	$(patsubst %.c,$(OBJS_DIR)/%.o,$(SRC))
