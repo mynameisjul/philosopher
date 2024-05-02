@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:42:07 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 15:05:31 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 11:13:53 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	print_time_state(t_philo *philo, char *event)
 
 	if (get_time(philo->g_vars, &time))
 		return (-1);
-	print_state(&philo->g_vars->write, philo->id, time, event);
+	print_state(&philo->g_vars->write, philo->id, time / 1000, event);
 	return (0);
 }

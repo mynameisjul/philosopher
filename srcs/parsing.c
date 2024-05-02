@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:36:45 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 17:28:57 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 10:54:36 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	validarg(char *arg, int *rule, int isphilo, char *arg_name)
 	if (n == 0)
 		return (printf("Argument '%s' must be 1 or higher\n", arg_name), -1);
 	*rule = (int) n;
+	if (isphilo == 2)
+		*rule *= 1000;
 	return (0);
 }
 
@@ -44,11 +46,11 @@ int	parsing(int ac, char *av[], t_rules *rules)
 		return (-1);
 	if (validarg(av[NB_PHILO], &rules->nb_philo, 1, "number_of_philos") == -1)
 		return (-1);
-	if (validarg(av[TIME_DIE], &rules->time_die, 0, "time_to_die") == -1)
+	if (validarg(av[TIME_DIE], &rules->time_die, 2, "time_to_die") == -1)
 		return (-1);
-	if (validarg(av[TIME_EAT], &rules->time_eat, 0, "time_to_eat") == -1)
+	if (validarg(av[TIME_EAT], &rules->time_eat, 2, "time_to_eat") == -1)
 		return (-1);
-	if (validarg(av[TIME_SLEEP], &rules->time_sleep, 0, "time_to_sleep") == -1)
+	if (validarg(av[TIME_SLEEP], &rules->time_sleep, 2, "time_to_sleep") == -1)
 		return (-1);
 	if (ac == 6
 		&& validarg(av[NB_EAT], &rules->nb_meals, 0, "number_of_meals") == -1)

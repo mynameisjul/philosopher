@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:32:34 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 17:29:59 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 11:06:52 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_time(t_global *g_vars, time_t *time)
 
 	if (gettimeofday(&tv, NULL))
 		return (-1);
-	*time = -g_vars->s_time + tv.tv_sec * 1000000 + tv.tv_usec;
+	*time = tv.tv_sec * 1000000 + tv.tv_usec - g_vars->s_time;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:40:23 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 17:35:09 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 10:37:41 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	clean(t_philo *philos, int nb_philo)
 	pthread_mutex_destroy(&philos[0].g_vars->done_eating.mutex);
 	pthread_mutex_destroy(&philos[0].g_vars->run.mutex);
 	pthread_mutex_destroy(&philos[0].g_vars->write.mutex);
-	free(philos);
 }
 
 int	main(int ac, char *av[])
