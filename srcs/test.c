@@ -6,49 +6,56 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 17:25:56 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 17:26:35 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 14:32:08 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* static void	print_params(t_rules rules)
+static void	clean(t_philo *philos, int nb_philo)
 {
-	printf("NB PHILO = %d\n \
-TIME DIE = %d\n \
-TIME EAT = %d\n \
-TIME SLEEP = %d\n \
-NB MEALS = %d\n", \
-rules.nb_philo, rules.time_die, rules.time_eat, rules.time_sleep, rules.nb_meals);
+	int	i;
+
+	i = 0;
+	while (i < nb_philo)
+	{
+		if (philos[i].thread)
+			pthread_join(philos[i].thread, NULL);
+		i++;
+	}
+	i = 0;
+	while (i < nb_philo)
+	{
+		pthread_mutex_destroy(&philos[i].left_fork.mutex);
+		i++;
+	}
+	pthread_mutex_destroy(&philos[0].g_vars->done_eating.mutex);
+	pthread_mutex_destroy(&philos[0].g_vars->run.mutex);
+	pthread_mutex_destroy(&philos[0].g_vars->write.mutex);
 }
 
-static void	print_globals(t_global g_vars)
+int	main(int ac, char *av[])
 {
-	printf("DONE EATING MTX = %p\n \
-			RUN MTX = %p\n \
-			TIME = %d\n \
-			WRITE MTX = %p\n", g_vars.done_eating.mutex, g_vars.run.mutex, g_vars.s_time, g_vars.write.mutex);
-}
-
-int main(int ac, char **av)
-{
-	t_philo	*philos;
-	t_rules	rules;
-	t_global g_vars;
+	t_rules		rules;
+	t_global	g_vars;
+	t_philo		philos[400];
 
 	init_rules(&rules);
-	philos = NULL;
 	if (parsing(ac, av, &rules) == -1)
 		return (-1);
-	print_params(rules);
 	if (init_g_vars(&g_vars))
 		return (-1);
-	if (ocalloc((void **)&philos, rules.nb_philo + 1, sizeof(t_philo)))
-	 	return (-1);
 	init_philos(philos, &g_vars, &rules);
-	 t_mutex m;
-	init_mutex(&m, 0);
-	print_state(&m, atoi(av[1]), atoi(av[2]), av[ac - 1]);
-	return (0);
+	set_var(&g_vars.run, RUN);
+	while (get_var(&g_vars.run) == RUN)
+	{
+		usleep(1000);
+		if (get_var(&g_vars.done_eating) != -1
+			&& get_var(&g_vars.done_eating) >= rules.nb_philo)
+		{
+			set_var(&g_vars.run, STOP);
+			break ;
+		}
+	}
+	return (clean(philos, rules.nb_philo), 0);
 }
-*/

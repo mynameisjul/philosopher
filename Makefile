@@ -6,12 +6,11 @@
 #    By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 14:38:38 by jblaye            #+#    #+#              #
-#    Updated: 2024/04/30 15:08:50 by jblaye           ###   ########.fr        #
+#    Updated: 2024/05/02 14:28:50 by jblaye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME = philosopher
+NAME = philo
 TEST = test_philo
 
 CC 			:= clang

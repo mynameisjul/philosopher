@@ -6,13 +6,13 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:40:23 by jblaye            #+#    #+#             */
-/*   Updated: 2024/05/02 10:37:41 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 14:31:48 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	clean(t_philo *philos, int nb_philo)
+static void	clean(t_philo *philos, int nb_philo)
 {
 	int	i;
 

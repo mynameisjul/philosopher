@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:49 by jblaye            #+#    #+#             */
-/*   Updated: 2024/04/30 17:24:33 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/02 14:31:56 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,6 @@ int		parsing(int ac, char *av[], t_rules *rules);
 /// CORE
 int		eating(t_philo *philo);
 int		sleeping(t_philo *philo);
-int		thinking(t_philo *philo);
 int		isphilodead(t_philo *philo);
 void	*routine(void *arg);
-
 #endif
