@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:36:45 by jblaye            #+#    #+#             */
-/*   Updated: 2024/05/02 10:54:36 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/15 14:59:12 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	validarg(char *arg, int *rule, int isphilo, char *arg_name)
 int	parsing(int ac, char *av[], t_rules *rules)
 {
 	if (ac < 5 || ac > 6)
-		return (-1);
+		return (print_error("Wrong number of arguments\n"), -1);
 	if (validarg(av[NB_PHILO], &rules->nb_philo, 1, "number_of_philos") == -1)
 		return (-1);
 	if (validarg(av[TIME_DIE], &rules->time_die, 2, "time_to_die") == -1)

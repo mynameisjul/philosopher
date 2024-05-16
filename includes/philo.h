@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:49 by jblaye            #+#    #+#             */
-/*   Updated: 2024/05/02 14:31:56 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/15 14:58:11 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,10 @@ int		init_philos(t_philo *philos, t_global *g_vars, t_rules *rules);
 /// UTILS
 int		ft_strlen(char *str);
 int		print_error(char *error);
-int		ocalloc(void **ptr, int nb, int size);
 void	ft_putnbr_fd(time_t n, int fd);
 void	set_var(t_mutex *var, int val);
 int		get_var(t_mutex *var);
 void	incr_var(t_mutex *var);
-void	print_state(t_mutex *var, int id, time_t time, char *event);
 int		print_time_state(t_philo *philo, char *event);
 int		get_time(t_global *g_vars, time_t *time);
 int		ft_usleep(t_philo *philo, time_t sleep_time);

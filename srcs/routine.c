@@ -6,7 +6,7 @@
 /*   By: jblaye <jblaye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:43:16 by jblaye            #+#    #+#             */
-/*   Updated: 2024/05/02 14:13:49 by jblaye           ###   ########.fr       */
+/*   Updated: 2024/05/16 09:33:08 by jblaye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,17 @@ int	eating(t_philo *philo)
 {
 	time_t	time;
 
+	if (philo->meals_eaten == philo->rules->nb_meals && philo->meals_eaten > 0)
+		return (-1);
 	if (take_fork(philo, &philo->left_fork)
 		|| take_fork(philo, philo->right_fork))
 		return (-1);
 	if (print_time_state(philo, EATING)
-		|| get_time(philo->g_vars, &time)
-		|| ft_usleep(philo, philo->rules->time_eat))
+		|| get_time(philo->g_vars, &time))
 		return (-1);
-	philo->last_meal = time + (time_t) philo->rules->time_eat;
+	philo->last_meal = time;
+	if (ft_usleep(philo, philo->rules->time_eat))
+		return (-1);
 	if (philo->rules->nb_meals != -1)
 		if (++philo->meals_eaten == philo->rules->nb_meals)
 			incr_var(&philo->g_vars->done_eating);
@@ -66,7 +69,7 @@ int	isphilodead(t_philo *philo)
 		return (-1);
 	if (time - philo->last_meal > philo->rules->time_die)
 		return (set_var(&philo->g_vars->run, STOP),
-			print_state(&philo->g_vars->write, philo->id, time / 1000, DIED), -1);
+			print_time_state(philo, DIED), -1);
 	return (0);
 }
 
